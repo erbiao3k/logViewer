@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RegisterPage</title>
+</head>
+<body class="mybody">
+<form name="registerPage" action="/logviewer/register" method="post" onsubmit="return register(this)"  novalidate autocomplete="off">
+    <div class="titleclass">
+        <br /><br />
+        账号信息提交后，请联系管理员激活账号
+    </div>
+    <div class="mydiv" >
+        <br /><br /><br /><br />
+        手机号码：<input type="text" name="phone" id="phone" placeholder="企业微信绑定的手机号">
+    </div>
+    <div class="mydiv">
+        <br />
+        企业邮箱：<input type="email" name="email" id="email" placeholder="企业微信绑定的邮箱">
+    </div>
+    <div class="mydiv">
+        <br />
+        所属区域：<input name="area" type="text" list="area" placeholder="所属区域" >
+        <datalist id="area">
+            <option value ="南区">南区</option>
+            <option value ="北区">北区</option>
+            <option value ="东区">东区</option>
+        </datalist>
+    </div>
+    <div class="mydiv">
+        <br />
+        输入密码：<input type="password" name="password" id="password" placeholder="字母字符数字组成，至少8位">
+    </div>
+    <div class="mydiv">
+        <br />
+        确认密码：<input type="password" name="confirmPassword" id="confirmPassword" placeholder="确认密码">
+    </div>
+    <div class="mydiv">
+        <br />&emsp;&emsp;&emsp;&emsp;
+        <input type="submit" value="提交">
+    </div>
+</form>
+<script>
+    function register(){
+        // 去除传入表单中的所有空格，判断传入值是否为空，为空则不允许提交表单
+        if (registerPage.phone.value.replace(/\s/gi,'') === ""){
+            alert("请输入手机号！！！");
+            return false
+        }
+        if (registerPage.phone.value.length !== 11){
+            alert("手机号格式不正确！！！");
+            return false
+        }
+        if (registerPage.email.value.replace(/\s/gi,'') === ""){
+            alert("请输入邮箱！！！");
+            return false
+        }
+        if (registerPage.email.value.replace(/\s/gi,'').search("@") === -1){
+            alert("邮箱格式不正确！！！")
+            return false
+        }
+
+        const start = registerPage.email.value.length - "@myemal.com".length;
+        const arr = registerPage.email.value.substr(start, "@myemal.com".length);
+        if(arr !== "@myemal.com"){
+            alert("请使用myemal.com邮箱注册！！！")
+            return false;
+        }
+
+        if (registerPage.password.value.replace(/\s/gi,'') === ""){
+            alert("请输入密码！！！");
+            return false
+        }
+
+        const pwdRegex = new RegExp('(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{8,30}');
+
+        if (!pwdRegex.test(registerPage.password.value)) {
+            alert("您的密码复杂度太低，密码中必须包含字母、数字、特殊字符，且至少8位");
+            return false
+        }
+
+        if (registerPage.confirmPassword.value.replace(/\s/gi,'') === ""){
+            alert("请确认密码！！！");
+            return false
+        }
+
+        if (registerPage.password.value.replace(/\s/gi,'') !==  registerPage.confirmPassword.value.replace(/\s/gi,'')){
+            alert("两次密码不一致！！！");
+            return false
+        }
+
+        if (registerPage.area.value.replace(/\s/gi,'') === ""){
+            alert("请选择区域！！！");
+            return false
+        }
+        return true;
+    }
+</script>
+</body>
+<style type="text/css">
+    .mydiv{
+        /*font-size: 20px;*/
+    }
+    .mybody{
+        background:url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2F65cfc596dc7af413a1f58a0f6e0304c6c4f0587e.jpg&refer=http%3A%2F%2Fi0.hdslb.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1643814841&t=08057b3724111dd55a3ece665e047db0) top center;
+        background-size:100%;
+        font-weight:bold;
+        /*font-size: 30px;*/
+        color: #696151;
+        text-align: center;
+        font-family: "Weibei SC";
+    }
+    .titleclass{
+        font-size: 50px;
+    }
+</style>
+
+</html>

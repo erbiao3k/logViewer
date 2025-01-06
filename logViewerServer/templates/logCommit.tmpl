@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>logCommit</title>
+	<script src="../static/js/projectInfo.js"></script>
+	<script src="../static/js/loginCommitCheck.js"></script>
+</head>
+<body class="myclass">
+<br /><br /><br />
+<form name="logCommit" action="/logviewer/log/commit" method="post" onsubmit="return loginCommitCheck(this)" novalidate autocomplete="off">
+	<div style="font-size: xx-large;">
+		项目名称：<input name="project" type="text" list="project" placeholder="请选择项目" onfocus="getProjectList()" onblur="wProject(this.value)">
+		<datalist id="project">
+		</datalist>
+	</div>
+	<br />
+	<div style="font-size: xx-large;">
+		环境类型：<input name="env" type="text" list="env" placeholder="请选择环境" onblur="wEnv(this.value)" onfocus="getEnv()">
+		<datalist id="env">
+		</datalist>
+	</div>
+	<br />
+	<div style="font-size: xx-large;">
+		服务名称：<input name="service" type="text" list="service" placeholder="请选择服务" onblur="wSvc(this.value)" onfocus="getSvc()" >
+		<datalist id="service">
+		</datalist>
+	</div>
+	<br />
+	<div style="font-size: xx-large;">
+		日志时间：<input name="date" type="date" placeholder="请选择日期" >
+	</div>
+	<br />
+	<div style="font-size: xx-large;">
+		<input type="submit" value="提交"/>
+	</div>
+</form>
+</body>
+<style type="text/css">
+	.myclass{
+		background:url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2F65cfc596dc7af413a1f58a0f6e0304c6c4f0587e.jpg&refer=http%3A%2F%2Fi0.hdslb.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1643814841&t=08057b3724111dd55a3ece665e047db0) top center;
+		background-size:100%;
+		font-weight:bold;
+		font-size: 30px;
+		color: #efe6da;
+		text-align: center;
+		font-family: "Weibei SC";
+	}
+</style>
+</html>
