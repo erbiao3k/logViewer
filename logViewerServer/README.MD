@@ -31,7 +31,7 @@ release = false
 path = storage
 
 # 日志服务端登陆地址
-download = http://127.0.0.1:9000/logherlper
+download = http://127.0.0.1:9000/logviewer
 
 # 数据库配置信息
 [mysql]
